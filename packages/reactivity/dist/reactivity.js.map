@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../shared/src/index.ts", "../src/index.ts"],
+  "sourcesContent": ["export function isObject(value) {\n  return typeof value === \"object\" && value !== null;\n}\n\nexport function isFunction(value) {\n  return typeof value == \"function\";\n}\nexport function isString(value) {\n  return typeof value == \"string\";\n}\nexport * from \"./shapeFlags\";\n\nconst hasOwnProperty = Object.prototype.hasOwnProperty;\nexport const hasOwn = (value, key) => hasOwnProperty.call(value, key);\n\nexport * from \"./patchFlags\";\n", "import { isObject } from \"@vue/shared\";\r\n\r\nconsole.log(isObject('isbo'))"],
+  "mappings": ";AAAO,SAAS,SAAS,OAAO;AAC9B,SAAO,OAAO,UAAU,YAAY,UAAU;AAChD;;;ACAA,QAAQ,IAAI,SAAS,MAAM,CAAC;",
+  "names": []
+}
