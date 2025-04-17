@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script type="module">
-      import { reactive } from "./reactivity.js";
-      const obj = { name: "jw" }
-      const state1 = reactive(obj);
-      //如果被代理过，一定有get 和set
-      const state2 = reactive(state1);
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script type="module">
+            import { reactive, effect } from "./reactivity.js";
+            const obj = { name: "jw", age: 18 };
+            // const state1 = reactive(obj);
+            // //如果被代理过，一定有get 和set
+            // const state2 = reactive(state1);
 
-      console.log(state1 === state2)
-    </script>
-  </body>
+            // console.log(state1 === state2)
+            const state = reactive(obj);
+
+            const _effect = effect(() => {
+                console.log(state.age);
+
+                effect(() => {
+                    console.log(state.age);
+                });
+                console.log(state.age);
+            });
+            // console.log(state.age);
+
+            // const _effect = effect(() => {
+            //     app.innerHTML = `${state.age}`;
+            // });
+
+            // state.age++;
+            // _effect.run()
+            // setTimeout(()=>{
+            //   state.age++
+            // },1000)
+        </script>
+    </body>
 </html>
